@@ -86,7 +86,7 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if self.path == "/.well-known/openai-apps-challenge":
-            self._send_text(200, "challenge-ok")
+            self._send_text(200, "gVELXa7ojEaTEOQkE3E-raSzfejk8MXBnkebX8c1WMA")
             return
 
         self._send_json(404, {"error": "Not found"})
