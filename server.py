@@ -86,7 +86,12 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if self.path == "/.well-known/openai-apps-challenge":
-            self._send_text(200, "gVELXa7ojEaTEOQkE3E-raSzfejk8MXBnkebX8c1WMA")
+            token = b"gVELXa7ojEaTE0QkE3E-raSzfejk8MXBnkebX8c1WMA"
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
+            self.send_header("Content-Length", str(len(token)))
+            self.end_headers()
+            self.wfile.write(token)
             return
 
         self._send_json(404, {"error": "Not found"})
